@@ -3,6 +3,7 @@ import Search from "./components/Search";
 import { useState, useEffect } from "react";
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
+import { useDebounce } from "react-use";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 
@@ -21,9 +22,12 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
+
+  useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
 
   const fetchMovies = async (query = "") => {
-    setIsLoading(false);
+    setIsLoading(true);
     setErrorMessage("");
 
     try {
@@ -53,8 +57,17 @@ const App = () => {
 
   // useEffect runs at start because of empty dependency array
   useEffect(() => {
-    fetchMovies(searchTerm);
-  }, [searchTerm]);
+    fetchMovies();
+  }, []);
+
+  // useEffect to handle debounced search
+  useEffect(() => {
+    if (debouncedSearchTerm !== "") {
+      fetchMovies(debouncedSearchTerm);
+    } else if (debouncedSearchTerm === "" && searchTerm === "") {
+      fetchMovies(); // Load popular movies when search is cleared
+    }
+  }, [debouncedSearchTerm]);
 
   return (
     <main>
