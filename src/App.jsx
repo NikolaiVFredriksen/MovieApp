@@ -94,12 +94,17 @@ const App = () => {
         <header>
           <img src="./hero.png" alt="Hero Banner" />
           <h1>
-            Find <span className="text-gradient">Movies</span> You'll Enjoy
-            Without the Hassle
+            Your Companion for the{" "}
+            <span className="text-gradient">2026 Oscars</span>
           </h1>
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </header>
-
+        <section className="trending">
+          <h2>
+            You've watched <span className="text-gradient">7/10</span> Best
+            Picture nominations!
+          </h2>
+        </section>
         {trendingMovies.length > 0 && (
           <section className="trending">
             <h2>Trending Movies</h2>

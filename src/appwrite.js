@@ -1,4 +1,4 @@
-import { Client, Databases, ID, Query } from "appwrite";
+import { Client, Databases, ID, Query, Account } from "appwrite";
 
 const PROJECT_ID = import.meta.env.VITE_APPWRITE_PROJECT_ID;
 const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
@@ -9,6 +9,30 @@ const client = new Client()
   .setProject(PROJECT_ID);
 
 const database = new Databases(client);
+export const account = new Account(client);
+
+// Google login
+export const loginWithGoogle = () => {
+  account.createOAuth2Session(
+    "google",
+    "http://localhost:5173", // redirect etter innlogging
+    "http://localhost:5173", // redirect hvis noe går galt
+  );
+};
+
+// Logout
+export const logout = async () => {
+  await account.deleteSession("current");
+};
+
+// Hent innlogget bruker
+export const getCurrentUser = async () => {
+  try {
+    return await account.get();
+  } catch {
+    return null;
+  }
+};
 
 export const updateSearchCount = async (searchTerm, movie) => {
   try {
