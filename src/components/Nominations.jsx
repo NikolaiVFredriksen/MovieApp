@@ -88,7 +88,7 @@ const Nominations = () => {
                             : "N/A"}
                         </span>
                         {nominee.won === true && (
-                          <span className="winner-badge">🏆</span>
+                          <span className="winner-badge"> •&nbsp;&nbsp;🏆</span>
                         )}
                       </div>
                     </div>

@@ -110,18 +110,6 @@ const App = () => {
 
         <section className="all-movies">
           <Nominations />
-
-          {isLoading ? (
-            <Spinner />
-          ) : errorMessage ? (
-            <p className="text-red-500">{errorMessage}</p>
-          ) : (
-            <ul>
-              {movieList.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
-              ))}
-            </ul>
-          )}
         </section>
       </div>
     </main>

@@ -140,6 +140,12 @@
       @apply text-gray-100 font-medium text-base;
     }
   }
+
+  .nominations {
+    & ul {
+      @apply grid grid-cols-2 gap-3 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5;
+    }
+  }
 }
 
 @utility text-gradient {
