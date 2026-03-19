@@ -1,0 +1,461 @@
+[
+  {
+    "category": "Best Picture",
+    "nominees": [
+      { "title": "Sinners", "tmdb_id": 1233413, "won": false },
+      { "title": "One Battle After Another", "tmdb_id": 1100782, "won": true },
+      { "title": "Frankenstein", "tmdb_id": 1064213, "won": false },
+      { "title": "Hamnet", "tmdb_id": 1197306, "won": false },
+      { "title": "Marty Supreme", "tmdb_id": 1210718, "won": false },
+      { "title": "Sentimental Value", "tmdb_id": 1233308, "won": false },
+      { "title": "The Secret Agent", "tmdb_id": 1268685, "won": false },
+      { "title": "Train Dreams", "tmdb_id": 1186532, "won": false },
+      { "title": "Bugonia", "tmdb_id": 1197738, "won": false },
+      { "title": "F1", "tmdb_id": 986056, "won": false }
+    ]
+  },
+  {
+    "category": "Actor in a Leading Role",
+    "nominees": [
+      {
+        "title": "Marty Supreme",
+        "tmdb_id": 1210718,
+        "person": "Timothée Chalamet",
+        "won": false
+      },
+      {
+        "title": "One Battle After Another",
+        "tmdb_id": 1100782,
+        "person": "Leonardo DiCaprio",
+        "won": true
+      },
+      {
+        "title": "Blue Moon",
+        "tmdb_id": 1229685,
+        "person": "Ethan Hawke",
+        "won": false
+      },
+      {
+        "title": "Sinners",
+        "tmdb_id": 1233413,
+        "person": "Michael B. Jordan",
+        "won": false
+      },
+      {
+        "title": "The Secret Agent",
+        "tmdb_id": 1268685,
+        "person": "Wagner Moura",
+        "won": false
+      }
+    ]
+  },
+  {
+    "category": "Actress in a Leading Role",
+    "nominees": [
+      {
+        "title": "Hamnet",
+        "tmdb_id": 1197306,
+        "person": "Jessie Buckley",
+        "won": false
+      },
+      {
+        "title": "If I Had Legs I'd Kick You",
+        "tmdb_id": 1215609,
+        "person": "Rose Byrne",
+        "won": false
+      },
+      {
+        "title": "Song Sung Blue",
+        "tmdb_id": 1234567,
+        "person": "Kate Hudson",
+        "won": true
+      },
+      {
+        "title": "Sentimental Value",
+        "tmdb_id": 1233308,
+        "person": "Renate Reinsve",
+        "won": false
+      },
+      {
+        "title": "Bugonia",
+        "tmdb_id": 1197738,
+        "person": "Emma Stone",
+        "won": false
+      }
+    ]
+  },
+  {
+    "category": "Actor in a Supporting Role",
+    "nominees": [
+      {
+        "title": "One Battle After Another",
+        "tmdb_id": 1100782,
+        "person": "Benicio del Toro",
+        "won": false
+      },
+      {
+        "title": "Frankenstein",
+        "tmdb_id": 1064213,
+        "person": "Jacob Elordi",
+        "won": true
+      },
+      {
+        "title": "Sinners",
+        "tmdb_id": 1233413,
+        "person": "Delroy Lindo",
+        "won": false
+      },
+      {
+        "title": "One Battle After Another",
+        "tmdb_id": 1100782,
+        "person": "Sean Penn",
+        "won": false
+      },
+      {
+        "title": "Sentimental Value",
+        "tmdb_id": 1233308,
+        "person": "Stellan Skarsgård",
+        "won": false
+      }
+    ]
+  },
+  {
+    "category": "Actress in a Supporting Role",
+    "nominees": [
+      {
+        "title": "Sentimental Value",
+        "tmdb_id": 1233308,
+        "person": "Elle Fanning",
+        "won": false
+      },
+      {
+        "title": "Sentimental Value",
+        "tmdb_id": 1233308,
+        "person": "Inga Ibsdotter Lilleaas",
+        "won": false
+      },
+      {
+        "title": "Weapons",
+        "tmdb_id": 1215117,
+        "person": "Amy Madigan",
+        "won": true
+      },
+      {
+        "title": "Sinners",
+        "tmdb_id": 1233413,
+        "person": "Wunmi Mosaku",
+        "won": false
+      },
+      {
+        "title": "One Battle After Another",
+        "tmdb_id": 1100782,
+        "person": "Teyana Taylor",
+        "won": false
+      }
+    ]
+  },
+  {
+    "category": "Directing",
+    "nominees": [
+      {
+        "title": "Hamnet",
+        "tmdb_id": 1197306,
+        "person": "Chloé Zhao",
+        "won": false
+      },
+      {
+        "title": "Marty Supreme",
+        "tmdb_id": 1210718,
+        "person": "Josh Safdie",
+        "won": false
+      },
+      {
+        "title": "One Battle After Another",
+        "tmdb_id": 1100782,
+        "person": "Paul Thomas Anderson",
+        "won": true
+      },
+      {
+        "title": "Sentimental Value",
+        "tmdb_id": 1233308,
+        "person": "Joachim Trier",
+        "won": false
+      },
+      {
+        "title": "Sinners",
+        "tmdb_id": 1233413,
+        "person": "Ryan Coogler",
+        "won": false
+      }
+    ]
+  },
+  {
+    "category": "Animated Feature",
+    "nominees": [
+      { "title": "Arco", "tmdb_id": 1215958, "won": false },
+      { "title": "Elio", "tmdb_id": 748783, "won": false },
+      { "title": "KPop Demon Hunters", "tmdb_id": 1233304, "won": true },
+      {
+        "title": "Little Amélie or the Character of Rain",
+        "tmdb_id": 1268123,
+        "won": false
+      },
+      { "title": "Zootopia 2", "tmdb_id": 1241982, "won": false }
+    ]
+  },
+  {
+    "category": "International Feature Film",
+    "nominees": [
+      {
+        "title": "The Secret Agent",
+        "tmdb_id": 1268685,
+        "country": "Brazil",
+        "won": false
+      },
+      {
+        "title": "It Was Just an Accident",
+        "tmdb_id": 1243685,
+        "country": "France",
+        "won": false
+      },
+      {
+        "title": "Sentimental Value",
+        "tmdb_id": 1233308,
+        "country": "Norway",
+        "won": true
+      },
+      {
+        "title": "Sirāt",
+        "tmdb_id": 1268901,
+        "country": "Spain",
+        "won": false
+      },
+      {
+        "title": "The Voice of Hind Rajab",
+        "tmdb_id": 1268444,
+        "country": "Tunisia",
+        "won": false
+      }
+    ]
+  },
+  {
+    "category": "Cinematography",
+    "nominees": [
+      {
+        "title": "Frankenstein",
+        "tmdb_id": 1064213,
+        "person": "Dan Laustsen",
+        "won": false
+      },
+      {
+        "title": "Marty Supreme",
+        "tmdb_id": 1210718,
+        "person": "Darius Khondji",
+        "won": false
+      },
+      {
+        "title": "One Battle After Another",
+        "tmdb_id": 1100782,
+        "person": "Michael Bauman",
+        "won": true
+      },
+      {
+        "title": "Sinners",
+        "tmdb_id": 1233413,
+        "person": "Autumn Durald Arkapaw",
+        "won": false
+      },
+      {
+        "title": "Train Dreams",
+        "tmdb_id": 1186532,
+        "person": "Adolpho Veloso",
+        "won": false
+      }
+    ]
+  },
+  {
+    "category": "Film Editing",
+    "nominees": [
+      {
+        "title": "F1",
+        "tmdb_id": 986056,
+        "person": "Stephen Mirrione",
+        "won": true
+      },
+      {
+        "title": "Marty Supreme",
+        "tmdb_id": 1210718,
+        "person": "Josh Safdie & Ronald Bronstein",
+        "won": false
+      },
+      {
+        "title": "One Battle After Another",
+        "tmdb_id": 1100782,
+        "person": "Andy Jurgensen",
+        "won": false
+      },
+      {
+        "title": "Sentimental Value",
+        "tmdb_id": 1233308,
+        "person": "Olivier Bugge Coutté",
+        "won": false
+      },
+      {
+        "title": "Sinners",
+        "tmdb_id": 1233413,
+        "person": "Michael P. Shawver",
+        "won": false
+      }
+    ]
+  },
+  {
+    "category": "Original Score",
+    "nominees": [
+      {
+        "title": "Bugonia",
+        "tmdb_id": 1197738,
+        "person": "Jerskin Fendrix",
+        "won": false
+      },
+      {
+        "title": "Frankenstein",
+        "tmdb_id": 1064213,
+        "person": "Alexandre Desplat",
+        "won": false
+      },
+      {
+        "title": "Hamnet",
+        "tmdb_id": 1197306,
+        "person": "Max Richter",
+        "won": false
+      },
+      {
+        "title": "One Battle After Another",
+        "tmdb_id": 1100782,
+        "person": "Jonny Greenwood",
+        "won": true
+      },
+      {
+        "title": "Sinners",
+        "tmdb_id": 1233413,
+        "person": "Ludwig Göransson",
+        "won": false
+      }
+    ]
+  },
+  {
+    "category": "Costume Design",
+    "nominees": [
+      {
+        "title": "Avatar: Fire and Ash",
+        "tmdb_id": 83533,
+        "person": "Deborah L. Scott",
+        "won": true
+      },
+      {
+        "title": "Frankenstein",
+        "tmdb_id": 1064213,
+        "person": "Kate Hawley",
+        "won": false
+      },
+      {
+        "title": "Hamnet",
+        "tmdb_id": 1197306,
+        "person": "Malgosia Turzanska",
+        "won": false
+      },
+      {
+        "title": "Marty Supreme",
+        "tmdb_id": 1210718,
+        "person": "Miyako Bellizzi",
+        "won": false
+      },
+      {
+        "title": "Sinners",
+        "tmdb_id": 1233413,
+        "person": "Ruth E. Carter",
+        "won": false
+      }
+    ]
+  },
+  {
+    "category": "Visual Effects",
+    "nominees": [
+      { "title": "Avatar: Fire and Ash", "tmdb_id": 83533, "won": false },
+      { "title": "F1", "tmdb_id": 986056, "won": false },
+      { "title": "Jurassic World Rebirth", "tmdb_id": 1128440, "won": false },
+      { "title": "The Lost Bus", "tmdb_id": 1268333, "won": false },
+      { "title": "Sinners", "tmdb_id": 1233413, "won": true }
+    ]
+  },
+  {
+    "category": "Writing (Original)",
+    "nominees": [
+      {
+        "title": "Blue Moon",
+        "tmdb_id": 1229685,
+        "person": "Robert Kaplow",
+        "won": false
+      },
+      {
+        "title": "It Was Just an Accident",
+        "tmdb_id": 1243685,
+        "person": "Jafar Panahi",
+        "won": false
+      },
+      {
+        "title": "Marty Supreme",
+        "tmdb_id": 1210718,
+        "person": "Josh Safdie & Ronald Bronstein",
+        "won": false
+      },
+      {
+        "title": "Sentimental Value",
+        "tmdb_id": 1233308,
+        "person": "Joachim Trier & Eskil Vogt",
+        "won": false
+      },
+      {
+        "title": "Sinners",
+        "tmdb_id": 1233413,
+        "person": "Ryan Coogler",
+        "won": true
+      }
+    ]
+  },
+  {
+    "category": "Writing (Adapted)",
+    "nominees": [
+      {
+        "title": "Bugonia",
+        "tmdb_id": 1197738,
+        "person": "Will Tracy",
+        "won": false
+      },
+      {
+        "title": "Frankenstein",
+        "tmdb_id": 1064213,
+        "person": "Guillermo del Toro",
+        "won": false
+      },
+      {
+        "title": "Hamnet",
+        "tmdb_id": 1197306,
+        "person": "Chloé Zhao & Maggie O'Farrell",
+        "won": true
+      },
+      {
+        "title": "One Battle After Another",
+        "tmdb_id": 1100782,
+        "person": "Paul Thomas Anderson",
+        "won": false
+      },
+      {
+        "title": "Train Dreams",
+        "tmdb_id": 1186532,
+        "person": "Clint Bentley & Greg Kwedar",
+        "won": false
+      }
+    ]
+  }
+]

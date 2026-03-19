@@ -6,6 +6,7 @@ import MovieCard from "./components/MovieCard";
 import { useDebounce } from "react-use";
 import { updateSearchCount } from "./appwrite";
 import { getTrendingMovies } from "./appwrite";
+import { loginWithGoogle, logout, getCurrentUser } from "./appwrite";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 
@@ -26,6 +27,16 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [user, setUser] = useState(null);
+
+  // Hent innlogget bruker ved oppstart
+  useEffect(() => {
+    const fetchUser = async () => {
+      const currentUser = await getCurrentUser();
+      setUser(currentUser);
+    };
+    fetchUser();
+  }, []);
 
   useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
 
@@ -93,6 +104,7 @@ const App = () => {
       <div className="wrapper">
         <header>
           <img src="./hero.png" alt="Hero Banner" />
+
           <h1>
             Your Companion for the{" "}
             <span className="text-gradient">2026 Oscars</span>
@@ -104,10 +116,34 @@ const App = () => {
             You've watched <span className="text-gradient">7/10</span> Best
             Picture nominations!
           </h2>
+          {/* Login-knapp */}
+          <div className="auth">
+            {user ? (
+              <button
+                onClick={async () => {
+                  await logout();
+                  setUser(null);
+                }}
+              >
+                Logg ut ({user.name})
+              </button>
+            ) : (
+              <button
+                onClick={loginWithGoogle}
+                style={{
+                  background: "white",
+                  color: "black",
+                  padding: "10px 20px",
+                }}
+              >
+                Logg inn med Google
+              </button>
+            )}
+          </div>
         </section>
-        {trendingMovies.length > 0 && (
+        {/* {trendingMovies.length > 0 && (
           <section className="trending">
-            <h2>Trending Movies</h2>
+            <h2>Most Popular Movies</h2>
             <ul>
               {trendingMovies.map((movie, index) => (
                 <li key={movie.$id}>
@@ -117,10 +153,10 @@ const App = () => {
               ))}
             </ul>
           </section>
-        )}
+        )} */}
 
         <section className="all-movies">
-          <h2>All Movies</h2>
+          <h2>All Nominees</h2>
 
           {isLoading ? (
             <Spinner />

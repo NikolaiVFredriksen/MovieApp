@@ -28,8 +28,11 @@ export const logout = async () => {
 // Hent innlogget bruker
 export const getCurrentUser = async () => {
   try {
-    return await account.get();
-  } catch {
+    const user = await account.get();
+    console.log("account.get():", user);
+    return user;
+  } catch (error) {
+    console.log("account.get() error:", error);
     return null;
   }
 };
