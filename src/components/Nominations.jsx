@@ -14,6 +14,28 @@ const API_OPTIONS = {
 const Nominations = () => {
   const [movieData, setMovieData] = useState({});
   const [selectedCategory, setSelectedCategory] = useState("Best Picture");
+  const [seen, setSeen] = useState(() =>
+    JSON.parse(localStorage.getItem("seen") || "[]"),
+  );
+  const [watchlist, setWatchlist] = useState(() =>
+    JSON.parse(localStorage.getItem("watchlist") || "[]"),
+  );
+
+  const toggleSeen = (key) => {
+    const updated = seen.includes(key)
+      ? seen.filter((k) => k !== key)
+      : [...seen, key];
+    setSeen(updated);
+    localStorage.setItem("seen", JSON.stringify(updated));
+  };
+
+  const toggleWatchlist = (key) => {
+    const updated = watchlist.includes(key)
+      ? watchlist.filter((k) => k !== key)
+      : [...watchlist, key];
+    setWatchlist(updated);
+    localStorage.setItem("watchlist", JSON.stringify(updated));
+  };
 
   useEffect(() => {
     const fetchMovieData = async () => {
@@ -54,6 +76,9 @@ const Nominations = () => {
               const rating = movie?.vote_average
                 ? movie.vote_average.toFixed(1)
                 : "N/A";
+              const key = `${nominee.tmdb_id}-${nominee.person || ""}`;
+              const isSeen = seen.includes(key);
+              const isWatchlisted = watchlist.includes(key);
 
               return (
                 <li key={index}>
@@ -88,8 +113,24 @@ const Nominations = () => {
                             : "N/A"}
                         </span>
                         {nominee.won === true && (
-                          <span className="winner-badge"> •&nbsp;&nbsp;🏆</span>
+                          <span className="winner-badge"> • &nbsp;🏆</span>
                         )}
+                      </div>
+                      <div className="card-actions mb-5">
+                        <button
+                          onClick={() => toggleSeen(key)}
+                          className={isSeen ? "active" : ""}
+                          title="Mark as seen"
+                        >
+                          👁 {isSeen ? "Seen" : "Unseen"}
+                        </button>
+                        <button
+                          onClick={() => toggleWatchlist(key)}
+                          className={isWatchlisted ? "active" : ""}
+                          title="Add to watchlist"
+                        >
+                          🔖 {isWatchlisted ? "Saved" : "Watchlist"}
+                        </button>
                       </div>
                     </div>
                   </div>
