@@ -28,16 +28,6 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const [user, setUser] = useState(null);
-
-  // Hent innlogget bruker ved oppstart
-  useEffect(() => {
-    const fetchUser = async () => {
-      const currentUser = await getCurrentUser();
-      setUser(currentUser);
-    };
-    fetchUser();
-  }, []);
 
   useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
 
@@ -116,34 +106,9 @@ const App = () => {
             You've watched <span className="text-gradient">7/10</span> Best
             Picture nominations!
           </h2>
-          {/* Login-knapp */}
-          <div className="auth">
-            {user ? (
-              <button
-                onClick={async () => {
-                  await logout();
-                  setUser(null);
-                }}
-              >
-                Logg ut ({user.name})
-              </button>
-            ) : (
-              <button
-                onClick={loginWithGoogle}
-                style={{
-                  background: "white",
-                  color: "black",
-                  padding: "10px 20px",
-                }}
-              >
-                Logg inn med Google
-              </button>
-            )}
-          </div>
         </section>
 
         <section className="all-movies">
-          <h2>All Nominees</h2>
           <Nominations />
 
           {isLoading ? (

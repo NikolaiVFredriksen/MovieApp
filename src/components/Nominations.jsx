@@ -22,7 +22,6 @@ const Nominations = () => {
           nominations.flatMap((cat) => cat.nominees.map((n) => n.tmdb_id)),
         ),
       ];
-
       const results = {};
       await Promise.all(
         uniqueIds.map(async (id) => {
@@ -37,7 +36,6 @@ const Nominations = () => {
       );
       setMovieData(results);
     };
-
     fetchMovieData();
   }, []);
 
@@ -47,39 +45,60 @@ const Nominations = () => {
 
   return (
     <section className="nominations">
-      <div className="category-filters">
-        {nominations.map((cat) => (
-          <button
-            key={cat.category}
-            onClick={() => setSelectedCategory(cat.category)}
-            className={selectedCategory === cat.category ? "active" : ""}
-          >
-            {cat.category}
-          </button>
-        ))}
-      </div>
+      {nominations.map((cat) => (
+        <div key={cat.category}>
+          <h2 className="mt-20 mb-2">{cat.category}</h2>
+          <ul>
+            {cat.nominees.map((nominee, index) => {
+              const movie = movieData[nominee.tmdb_id];
+              const rating = movie?.vote_average
+                ? movie.vote_average.toFixed(1)
+                : "N/A";
 
-      <h2>{selectedCategory}</h2>
-      <ul className="nominees-list">
-        {currentCategory?.nominees.map((nominee, index) => {
-          const movie = movieData[nominee.tmdb_id];
-          return (
-            <li key={index} className={nominee.won ? "winner" : ""}>
-              {movie?.poster_path && (
-                <img
-                  src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
-                  alt={nominee.title}
-                />
-              )}
-              <div>
-                <h3>{nominee.title}</h3>
-                {nominee.person && <p>{nominee.person}</p>}
-                {nominee.won && <span className="winner-badge">🏆 Winner</span>}
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+              return (
+                <li key={index}>
+                  <div className="movie-card">
+                    <img
+                      src={
+                        movie?.poster_path
+                          ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                          : `/no-movie.png`
+                      }
+                      alt={nominee.title}
+                    />
+                    <div className="mt-4">
+                      <h3>{nominee.title}</h3>
+                      <div className="content">
+                        <div className="rating">
+                          <img src="/star.svg" alt="rating" />
+                          <p>{rating}</p>
+                        </div>
+                        <span>•</span>
+                        {nominee.person ? (
+                          <span className="lang">{nominee.person}</span>
+                        ) : (
+                          <span className="lang">
+                            {movie?.original_language?.toUpperCase() || "N/A"}
+                          </span>
+                        )}
+                        <span>•</span>
+                        <span className="year">
+                          {movie?.release_date
+                            ? movie.release_date.split("-")[0]
+                            : "N/A"}
+                        </span>
+                        {nominee.won === true && (
+                          <span className="winner-badge">🏆</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
     </section>
   );
 };
