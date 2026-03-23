@@ -8,6 +8,7 @@ import { updateSearchCount } from "./appwrite";
 import { getTrendingMovies } from "./appwrite";
 import { loginWithGoogle, logout, getCurrentUser } from "./appwrite";
 import Nominations from "./components/Nominations";
+import nominations from "./data/nominations.json";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 
@@ -29,6 +30,17 @@ const App = () => {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [user, setUser] = useState(null);
+  const [seen, setSeen] = useState(() =>
+    JSON.parse(localStorage.getItem("seen") || "[]"),
+  );
+
+  const toggleSeen = (key) => {
+    const updated = seen.includes(key)
+      ? seen.filter((k) => k !== key)
+      : [...seen, key];
+    setSeen(updated);
+    localStorage.setItem("seen", JSON.stringify(updated));
+  };
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -171,13 +183,22 @@ const App = () => {
         </header>
         <section className="trending">
           <h2>
-            You've watched <span className="text-gradient">7/10</span> Best
-            Picture nominations!
+            You've watched{" "}
+            <span className="text-gradient">
+              {nominations
+                .find((c) => c.category === "Best Picture")
+                ?.nominees.filter((n) => seen.includes(`${n.tmdb_id}-`))
+                .length || 0}
+              /
+              {nominations.find((c) => c.category === "Best Picture")?.nominees
+                .length || 0}
+            </span>{" "}
+            Best Picture nominations!
           </h2>
         </section>
 
         <section className="all-movies">
-          <Nominations />
+          <Nominations seen={seen} toggleSeen={toggleSeen} />
         </section>
       </div>
     </main>

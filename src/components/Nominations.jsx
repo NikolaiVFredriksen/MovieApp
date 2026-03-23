@@ -11,23 +11,12 @@ const API_OPTIONS = {
   },
 };
 
-const Nominations = () => {
+const Nominations = ({ seen, toggleSeen }) => {
   const [movieData, setMovieData] = useState({});
   const [selectedCategory, setSelectedCategory] = useState("Best Picture");
-  const [seen, setSeen] = useState(() =>
-    JSON.parse(localStorage.getItem("seen") || "[]"),
-  );
   const [watchlist, setWatchlist] = useState(() =>
     JSON.parse(localStorage.getItem("watchlist") || "[]"),
   );
-
-  const toggleSeen = (key) => {
-    const updated = seen.includes(key)
-      ? seen.filter((k) => k !== key)
-      : [...seen, key];
-    setSeen(updated);
-    localStorage.setItem("seen", JSON.stringify(updated));
-  };
 
   const toggleWatchlist = (key) => {
     const updated = watchlist.includes(key)
