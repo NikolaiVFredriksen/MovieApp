@@ -116,70 +116,74 @@ const App = () => {
       <div className="pattern" />
       <div className="wrapper">
         <header>
-          <img src="./hero.png" alt="Hero Banner" />
-
-          <h1>
-            Your Companion for the{" "}
-            <span className="text-gradient">2026 Oscars</span>
-          </h1>
-          <div
+          <nav
             style={{
               display: "flex",
-              justifyContent: "center",
-              marginTop: "1rem",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "2rem",
             }}
           >
+            <span
+              style={{ color: "white", fontWeight: "bold", fontSize: "1.4rem" }}
+            >
+              🎬 Oscars Companion
+            </span>
             {user ? (
-              <button
-                onClick={async () => {
-                  await logout();
-                  setUser(null);
-                }}
-                style={{
-                  background: "white",
-                  color: "black",
-                  padding: "10px 20px",
-                  borderRadius: "8px",
-                  position: "relative",
-                  zIndex: 20,
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                }}
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "12px" }}
               >
-                <img
-                  src="https://www.google.com/favicon.ico"
-                  alt="Google"
-                  style={{ width: "18px", height: "18px" }}
-                />
-                Log out ({user.name})
-              </button>
+                <span style={{ color: "white", fontSize: "0.9rem" }}>
+                  {user.name}
+                </span>
+                <button
+                  onClick={async () => {
+                    await logout();
+                    setUser(null);
+                  }}
+                  style={{
+                    background: "transparent",
+                    color: "#9ca4ab",
+                    padding: "6px 12px",
+                    borderRadius: "8px",
+                    cursor: "pointer",
+                    border: "1px solid #9ca4ab",
+                    fontSize: "0.85rem",
+                  }}
+                >
+                  Log out
+                </button>
+              </div>
             ) : (
               <button
                 onClick={loginWithGoogle}
                 style={{
                   background: "white",
                   color: "black",
-                  padding: "10px 20px",
+                  padding: "8px 16px",
                   borderRadius: "8px",
-                  position: "relative",
-                  zIndex: 20,
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
                   gap: "8px",
+                  fontSize: "0.9rem",
                 }}
               >
                 <img
                   src="https://www.google.com/favicon.ico"
                   alt="Google"
-                  style={{ width: "18px", height: "18px" }}
+                  style={{ width: "16px", height: "16px" }}
                 />
                 Sign in with Google
               </button>
             )}
-          </div>
+          </nav>
+
+          <img src="./hero.png" alt="Hero Banner" />
+          <h1>
+            Your Companion for the{" "}
+            <span className="text-gradient">2026 Oscars</span>
+          </h1>
         </header>
         <section className="trending">
           <h2>
