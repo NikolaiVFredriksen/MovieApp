@@ -28,6 +28,16 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      const currentUser = await getCurrentUser();
+      setUser(currentUser);
+    };
+    fetchUser();
+  }, []);
 
   useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
 
@@ -100,6 +110,45 @@ const App = () => {
             Your Companion for the{" "}
             <span className="text-gradient">2026 Oscars</span>
           </h1>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "1rem",
+            }}
+          >
+            {user ? (
+              <button
+                onClick={async () => {
+                  await logout();
+                  setUser(null);
+                }}
+                style={{
+                  background: "white",
+                  color: "black",
+                  padding: "10px 20px",
+                  borderRadius: "8px",
+                }}
+              >
+                Log out ({user.name})
+              </button>
+            ) : (
+              <button
+                onClick={loginWithGoogle}
+                style={{
+                  background: "white",
+                  color: "black",
+                  padding: "10px 20px",
+                  borderRadius: "8px",
+                  position: "relative",
+                  zIndex: 20,
+                  cursor: "pointer",
+                }}
+              >
+                Sign in with Google
+              </button>
+            )}
+          </div>
         </header>
         <section className="trending">
           <h2>
