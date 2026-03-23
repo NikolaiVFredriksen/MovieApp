@@ -128,8 +128,19 @@ const App = () => {
                   color: "black",
                   padding: "10px 20px",
                   borderRadius: "8px",
+                  position: "relative",
+                  zIndex: 20,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
                 }}
               >
+                <img
+                  src="https://www.google.com/favicon.ico"
+                  alt="Google"
+                  style={{ width: "18px", height: "18px" }}
+                />
                 Log out ({user.name})
               </button>
             ) : (
@@ -143,8 +154,16 @@ const App = () => {
                   position: "relative",
                   zIndex: 20,
                   cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
                 }}
               >
+                <img
+                  src="https://www.google.com/favicon.ico"
+                  alt="Google"
+                  style={{ width: "18px", height: "18px" }}
+                />
                 Sign in with Google
               </button>
             )}
