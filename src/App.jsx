@@ -218,6 +218,24 @@ const App = () => {
               Actor in a Leading Role nominations!
             </h3>
           </section>
+
+          <section className="trending">
+            <h3>
+              You've watched{" "}
+              <span className="text-gradient">
+                {nominations
+                  .find((c) => c.category === "Actress in a Leading Role")
+                  ?.nominees.filter((n) =>
+                    seen.some((k) => k.startsWith(`${n.tmdb_id}-`)),
+                  ).length || 0}
+                /
+                {nominations.find(
+                  (c) => c.category === "Actress in a Leading Role",
+                )?.nominees.length || 0}
+              </span>{" "}
+              Actress in a Leading Role nominations!
+            </h3>
+          </section>
         </section>
 
         <section className="all-movies">
