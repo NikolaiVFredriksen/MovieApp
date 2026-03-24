@@ -9,6 +9,7 @@ import { getTrendingMovies } from "./appwrite";
 import { loginWithGoogle, logout, getCurrentUser } from "./appwrite";
 import Nominations from "./components/Nominations";
 import nominations from "./data/nominations.json";
+import Sidebar from "./components/Sidebar";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 
@@ -185,62 +186,24 @@ const App = () => {
             <span className="text-gradient">2026 Oscars</span>
           </h1>
         </header>
-        <section className="trending">
-          <h2>
-            You've watched{" "}
-            <span className="text-gradient">
-              {nominations
-                .find((c) => c.category === "Best Picture")
-                ?.nominees.filter((n) =>
-                  seen.some((k) => k.startsWith(`${n.tmdb_id}-`)),
-                ).length || 0}
-              /
-              {nominations.find((c) => c.category === "Best Picture")?.nominees
-                .length || 0}
-            </span>{" "}
-            Best Picture nominations!
-          </h2>
 
-          <section className="trending">
-            <h3>
-              You've watched{" "}
-              <span className="text-gradient">
-                {nominations
-                  .find((c) => c.category === "Actor in a Leading Role")
-                  ?.nominees.filter((n) =>
-                    seen.some((k) => k.startsWith(`${n.tmdb_id}-`)),
-                  ).length || 0}
-                /
-                {nominations.find(
-                  (c) => c.category === "Actor in a Leading Role",
-                )?.nominees.length || 0}
-              </span>{" "}
-              Actor in a Leading Role nominations!
-            </h3>
-          </section>
-
-          <section className="trending">
-            <h3>
-              You've watched{" "}
-              <span className="text-gradient">
-                {nominations
-                  .find((c) => c.category === "Actress in a Leading Role")
-                  ?.nominees.filter((n) =>
-                    seen.some((k) => k.startsWith(`${n.tmdb_id}-`)),
-                  ).length || 0}
-                /
-                {nominations.find(
-                  (c) => c.category === "Actress in a Leading Role",
-                )?.nominees.length || 0}
-              </span>{" "}
-              Actress in a Leading Role nominations!
-            </h3>
-          </section>
-        </section>
-
-        <section className="all-movies">
-          <Nominations seen={seen} toggleSeen={toggleSeen} />
-        </section>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "260px 1fr",
+            gap: "24px",
+            marginTop: "2rem",
+          }}
+        >
+          <div
+            style={{ position: "sticky", top: "2rem", height: "fit-content" }}
+          >
+            <Sidebar seen={seen} />
+          </div>
+          <div>
+            <Nominations seen={seen} toggleSeen={toggleSeen} />
+          </div>
+        </div>
       </div>
     </main>
   );
