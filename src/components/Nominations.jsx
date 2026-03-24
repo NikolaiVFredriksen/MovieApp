@@ -66,7 +66,9 @@ const Nominations = ({ seen, toggleSeen }) => {
                 ? movie.vote_average.toFixed(1)
                 : "N/A";
               const key = `${nominee.tmdb_id}-${nominee.person || ""}`;
-              const isSeen = seen.includes(key);
+              const isSeen = seen.some((k) =>
+                k.startsWith(`${nominee.tmdb_id}-`),
+              );
               const isWatchlisted = watchlist.includes(key);
 
               return (
