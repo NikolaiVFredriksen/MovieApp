@@ -73,12 +73,20 @@ const Sidebar = ({ seen }) => {
             borderTop: "0.5px solid rgba(255,255,255,0.1)",
           }}
         >
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <span style={{ fontSize: "12px", color: "#9ca4ab" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <span
+              style={{ fontSize: "14px", fontWeight: "600", color: "white" }}
+            >
               Total seen
             </span>
             <span
-              style={{ fontSize: "12px", fontWeight: "500", color: "white" }}
+              style={{ fontSize: "14px", fontWeight: "600", color: "white" }}
             >
               {[...new Set(seen.map((k) => k.split("-")[0]))].length}/
               {
