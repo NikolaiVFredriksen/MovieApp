@@ -35,6 +35,10 @@
     @apply text-2xl font-bold text-white sm:text-3xl;
   }
 
+  h3 {
+    @apply text-lg font-bold text-white sm:text-lg;
+  }
+
   main {
     @apply min-h-screen relative bg-primary;
   }
@@ -58,6 +62,26 @@
   }
 
   .trending {
+    @apply mt-20;
+
+    & ul {
+      @apply flex flex-row overflow-y-auto gap-5 -mt-10 w-full hide-scrollbar;
+    }
+
+    & ul li {
+      @apply min-w-[230px] flex flex-row items-center;
+    }
+
+    & ul li p {
+      @apply fancy-text mt-[22px] text-nowrap;
+    }
+
+    & ul li img {
+      @apply w-[127px] h-[163px] rounded-lg object-cover -ml-3.5;
+    }
+  }
+
+  .secondary-awards {
     @apply mt-20;
 
     & ul {

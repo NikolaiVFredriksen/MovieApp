@@ -191,14 +191,33 @@ const App = () => {
             <span className="text-gradient">
               {nominations
                 .find((c) => c.category === "Best Picture")
-                ?.nominees.filter((n) => seen.includes(`${n.tmdb_id}-`))
-                .length || 0}
+                ?.nominees.filter((n) =>
+                  seen.some((k) => k.startsWith(`${n.tmdb_id}-`)),
+                ).length || 0}
               /
               {nominations.find((c) => c.category === "Best Picture")?.nominees
                 .length || 0}
             </span>{" "}
             Best Picture nominations!
           </h2>
+
+          <section className="trending">
+            <h3>
+              You've watched{" "}
+              <span className="text-gradient">
+                {nominations
+                  .find((c) => c.category === "Actor in a Leading Role")
+                  ?.nominees.filter((n) =>
+                    seen.some((k) => k.startsWith(`${n.tmdb_id}-`)),
+                  ).length || 0}
+                /
+                {nominations.find(
+                  (c) => c.category === "Actor in a Leading Role",
+                )?.nominees.length || 0}
+              </span>{" "}
+              Actor in a Leading Role nominations!
+            </h3>
+          </section>
         </section>
 
         <section className="all-movies">
