@@ -35,12 +35,18 @@ const App = () => {
     JSON.parse(localStorage.getItem("seen") || "[]"),
   );
 
-  const toggleSeen = (key) => {
-    const updated = seen.includes(key)
-      ? seen.filter((k) => k !== key)
-      : [...seen, key];
-    setSeen(updated);
-    localStorage.setItem("seen", JSON.stringify(updated));
+  const toggleSeen = (tmdbId) => {
+    const hasAny = seen.some((k) => k.startsWith(`${tmdbId}-`));
+
+    if (hasAny) {
+      const updated = seen.filter((k) => !k.startsWith(`${tmdbId}-`));
+      setSeen(updated);
+      localStorage.setItem("seen", JSON.stringify(updated));
+    } else {
+      const updated = [...seen, `${tmdbId}-`];
+      setSeen(updated);
+      localStorage.setItem("seen", JSON.stringify(updated));
+    }
   };
 
   useEffect(() => {

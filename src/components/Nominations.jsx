@@ -109,9 +109,8 @@ const Nominations = ({ seen, toggleSeen }) => {
                       </div>
                       <div className="card-actions mb-5">
                         <button
-                          onClick={() => toggleSeen(key)}
+                          onClick={() => toggleSeen(nominee.tmdb_id)}
                           className={isSeen ? "active" : ""}
-                          title="Mark as seen"
                         >
                           👁 {isSeen ? "Seen" : "Unseen"}
                         </button>
