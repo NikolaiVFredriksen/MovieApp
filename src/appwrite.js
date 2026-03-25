@@ -17,6 +17,8 @@ export const loginWithGoogle = () => {
     "google",
     "http://localhost:5173", // redirect etter innlogging
     "http://localhost:5173", // redirect hvis noe går galt
+    "https://movie-app-git-oscars-companion-zillacoops-projects.vercel.app/#",
+    "https://movie-app-git-oscars-companion-zillacoops-projects.vercel.app/#",
   );
 };
 
