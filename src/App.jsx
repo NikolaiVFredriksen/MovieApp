@@ -31,7 +31,11 @@ const App = () => {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [user, setUser] = useState(null);
+  const [watchlist, setWatchlist] = useState([]);
+  const [toggleWatchlist, setToggleWatchlist] = useState([]);
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [filter, setFilter] = useState("all");
   const [seen, setSeen] = useState(() =>
     JSON.parse(localStorage.getItem("seen") || "[]"),
   );
@@ -214,7 +218,41 @@ const App = () => {
             </div>
 
             <div>
-              <Nominations seen={seen} toggleSeen={toggleSeen} />
+              <div
+                style={{ display: "flex", gap: "8px", marginBottom: "1.5rem" }}
+              >
+                {["All", "Seen", "Watchlist"].map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => setFilter(f.toLowerCase())}
+                    style={{
+                      padding: "6px 16px",
+                      borderRadius: "8px",
+                      cursor: "pointer",
+                      fontSize: "0.9rem",
+                      fontWeight: filter === f.toLowerCase() ? "600" : "400",
+                      background:
+                        filter === f.toLowerCase() ? "white" : "transparent",
+                      color: filter === f.toLowerCase() ? "black" : "#9ca4ab",
+                      border: "1px solid",
+                      borderColor:
+                        filter === f.toLowerCase() ? "white" : "#9ca4ab",
+                    }}
+                  >
+                    {f}
+                  </button>
+                ))}
+              </div>
+
+              <div>
+                <Nominations
+                  seen={seen}
+                  toggleSeen={toggleSeen}
+                  watchlist={watchlist}
+                  toggleWatchlist={toggleWatchlist}
+                  filter={filter}
+                />
+              </div>
             </div>
           </div>
         </div>
