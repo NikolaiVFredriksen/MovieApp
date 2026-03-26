@@ -128,7 +128,7 @@ const App = () => {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              marginBottom: "2rem",
+              marginBottom: "0rem",
             }}
           >
             <span

@@ -57,7 +57,10 @@ const Nominations = ({ seen, toggleSeen }) => {
   return (
     <section className="nominations">
       {nominations.map((cat) => (
-        <div key={cat.category}>
+        <div
+          key={cat.category}
+          id={cat.category.replace(/\s+/g, "-").toLowerCase()}
+        >
           <h2 className="mt-20 mb-2">{cat.category}</h2>
           <ul>
             {cat.nominees.map((nominee, index) => {
