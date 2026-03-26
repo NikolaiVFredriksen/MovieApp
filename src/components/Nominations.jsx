@@ -19,7 +19,6 @@ const Nominations = ({
   toggleWatchlist,
 }) => {
   const [movieData, setMovieData] = useState({});
-  const [selectedCategory, setSelectedCategory] = useState("Best Picture");
 
   useEffect(() => {
     const fetchMovieData = async () => {
@@ -45,9 +44,28 @@ const Nominations = ({
     fetchMovieData();
   }, []);
 
-  const currentCategory = nominations.find(
-    (c) => c.category === selectedCategory,
-  );
+  const hasAnyResults = nominations.some((cat) => {
+    const filtered = cat.nominees.filter((n) => {
+      if (filter === "seen")
+        return seen.some((k) => k.startsWith(`${n.tmdb_id}-`));
+      if (filter === "watchlist")
+        return watchlist.some((k) => k.startsWith(`${n.tmdb_id}-`));
+      return true;
+    });
+    return filtered.length > 0;
+  });
+
+  if (!hasAnyResults) {
+    return (
+      <section className="nominations">
+        <p style={{ color: "#9ca4ab", marginTop: "2rem" }}>
+          {filter === "seen"
+            ? "No movies marked as seen yet."
+            : "No movies added to watchlist yet."}
+        </p>
+      </section>
+    );
+  }
 
   return (
     <section className="nominations">
@@ -74,7 +92,6 @@ const Nominations = ({
                 const rating = movie?.vote_average
                   ? movie.vote_average.toFixed(1)
                   : "N/A";
-                const key = `${nominee.tmdb_id}-${nominee.person || ""}`;
                 const isSeen = seen.some((k) =>
                   k.startsWith(`${nominee.tmdb_id}-`),
                 );
@@ -129,7 +146,7 @@ const Nominations = ({
                             onClick={() => toggleWatchlist(nominee.tmdb_id)}
                             className={isWatchlisted ? "active" : ""}
                           >
-                            🔖 {isWatchlisted ? "Saved" : "Watchlist"}
+                            🔖 {isWatchlisted ? "Added" : "Watchlist"}
                           </button>
                         </div>
                       </div>

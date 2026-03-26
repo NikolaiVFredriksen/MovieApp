@@ -31,14 +31,28 @@ const App = () => {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [user, setUser] = useState(null);
-  const [watchlist, setWatchlist] = useState([]);
-  const [toggleWatchlist, setToggleWatchlist] = useState([]);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [filter, setFilter] = useState("all");
   const [seen, setSeen] = useState(() =>
     JSON.parse(localStorage.getItem("seen") || "[]"),
   );
+  const [watchlist, setWatchlist] = useState(() =>
+    JSON.parse(localStorage.getItem("watchlist") || "[]"),
+  );
+
+  const toggleWatchlist = (tmdbId) => {
+    const hasAny = watchlist.some((k) => k.startsWith(`${tmdbId}-`));
+    if (hasAny) {
+      const updated = watchlist.filter((k) => !k.startsWith(`${tmdbId}-`));
+      setWatchlist(updated);
+      localStorage.setItem("watchlist", JSON.stringify(updated));
+    } else {
+      const updated = [...watchlist, `${tmdbId}-`];
+      setWatchlist(updated);
+      localStorage.setItem("watchlist", JSON.stringify(updated));
+    }
+  };
 
   const toggleSeen = (tmdbId) => {
     const hasAny = seen.some((k) => k.startsWith(`${tmdbId}-`));
