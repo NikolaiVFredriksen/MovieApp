@@ -186,6 +186,42 @@
   }
 }
 
+.layout-grid {
+  @apply grid gap-6 mt-8;
+  grid-template-columns: 260px 1fr;
+}
+
+.sidebar-toggle {
+  @apply hidden;
+}
+
+.sidebar-wrapper {
+  @apply block;
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+}
+
+@media (max-width: 768px) {
+  .layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-toggle {
+    @apply flex items-center gap-2 text-sm font-medium text-white px-4 py-2 rounded-lg border border-gray-600 cursor-pointer bg-transparent;
+    grid-column: 1;
+  }
+
+  .sidebar-wrapper {
+    @apply hidden;
+    grid-column: 1;
+  }
+
+  .sidebar-wrapper.open {
+    @apply block;
+  }
+}
+
 @utility text-gradient {
   @apply bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] bg-clip-text text-transparent;
 }

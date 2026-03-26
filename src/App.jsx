@@ -31,6 +31,7 @@ const App = () => {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [user, setUser] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [seen, setSeen] = useState(() =>
     JSON.parse(localStorage.getItem("seen") || "[]"),
   );
@@ -195,19 +196,26 @@ const App = () => {
 
         <div
           style={{
-            display: "grid",
             gridTemplateColumns: "260px 1fr",
             gap: "24px",
             marginTop: "2rem",
           }}
         >
-          <div
-            style={{ position: "sticky", top: "2rem", height: "fit-content" }}
-          >
-            <Sidebar seen={seen} />
-          </div>
-          <div>
-            <Nominations seen={seen} toggleSeen={toggleSeen} />
+          <div className="layout-grid">
+            <button
+              className="sidebar-toggle"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
+              {sidebarOpen ? "✕ Hide Progress" : "📊 Show Progress"}
+            </button>
+
+            <div className={`sidebar-wrapper ${sidebarOpen ? "open" : ""}`}>
+              <Sidebar seen={seen} />
+            </div>
+
+            <div>
+              <Nominations seen={seen} toggleSeen={toggleSeen} />
+            </div>
           </div>
         </div>
       </div>
