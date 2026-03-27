@@ -1,5 +1,3 @@
-import React from "react";
-import Search from "./components/Search";
 import { useState, useEffect } from "react";
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
@@ -8,8 +6,15 @@ import { updateSearchCount } from "./appwrite";
 import { getTrendingMovies } from "./appwrite";
 import { loginWithGoogle, logout, getCurrentUser } from "./appwrite";
 import Nominations from "./components/Nominations";
-import nominations from "./data/nominations.json";
 import Sidebar from "./components/Sidebar";
+import {
+  getSeen,
+  addSeen,
+  removeSeen,
+  getWatchlist,
+  addWatchlist,
+  removeWatchlist,
+} from "./appwrite";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 
@@ -41,30 +46,33 @@ const App = () => {
     JSON.parse(localStorage.getItem("watchlist") || "[]"),
   );
 
-  const toggleWatchlist = (tmdbId) => {
+  const toggleWatchlist = async (tmdbId) => {
     const hasAny = watchlist.some((k) => k.startsWith(`${tmdbId}-`));
     if (hasAny) {
       const updated = watchlist.filter((k) => !k.startsWith(`${tmdbId}-`));
       setWatchlist(updated);
       localStorage.setItem("watchlist", JSON.stringify(updated));
+      if (user) await removeWatchlist(user.$id, tmdbId);
     } else {
       const updated = [...watchlist, `${tmdbId}-`];
       setWatchlist(updated);
       localStorage.setItem("watchlist", JSON.stringify(updated));
+      if (user) await addWatchlist(user.$id, tmdbId);
     }
   };
 
-  const toggleSeen = (tmdbId) => {
+  const toggleSeen = async (tmdbId) => {
     const hasAny = seen.some((k) => k.startsWith(`${tmdbId}-`));
-
     if (hasAny) {
       const updated = seen.filter((k) => !k.startsWith(`${tmdbId}-`));
       setSeen(updated);
       localStorage.setItem("seen", JSON.stringify(updated));
+      if (user) await removeSeen(user.$id, tmdbId);
     } else {
       const updated = [...seen, `${tmdbId}-`];
       setSeen(updated);
       localStorage.setItem("seen", JSON.stringify(updated));
+      if (user) await addSeen(user.$id, tmdbId);
     }
   };
 
@@ -73,6 +81,12 @@ const App = () => {
       await new Promise((resolve) => setTimeout(resolve, 500));
       const currentUser = await getCurrentUser();
       setUser(currentUser);
+      if (currentUser) {
+        const seenData = await getSeen(currentUser.$id);
+        const watchlistData = await getWatchlist(currentUser.$id);
+        setSeen(seenData.map((id) => `${id}-`));
+        setWatchlist(watchlistData.map((id) => `${id}-`));
+      }
     };
     fetchUser();
   }, []);
@@ -166,6 +180,10 @@ const App = () => {
                   onClick={async () => {
                     await logout();
                     setUser(null);
+                    setSeen([]);
+                    setWatchlist([]);
+                    localStorage.removeItem("seen");
+                    localStorage.removeItem("watchlist");
                   }}
                   style={{
                     background: "transparent",
