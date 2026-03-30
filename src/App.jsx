@@ -154,26 +154,40 @@ const App = () => {
   return (
     <main>
       <div className="pattern" />
-      <div className="wrapper">
-        <header>
+
+      <header
+        style={{
+          background: "#0a0618",
+          overflow: "hidden",
+          marginBottom: "2rem",
+          position: "relative",
+          zIndex: 10,
+        }}
+      >
+        <div
+          style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 40px" }}
+        >
           <nav
             style={{
+              padding: "12px 0",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              marginBottom: "0rem",
+              borderBottom: "0.5px solid rgba(255,255,255,0.08)",
             }}
           >
             <span
-              style={{ color: "white", fontWeight: "bold", fontSize: "1.4rem" }}
+              style={{ color: "white", fontWeight: "600", fontSize: "1.1rem" }}
             >
-              🎬 Oscars Companion
+              OscarsCompanion
             </span>
             {user ? (
               <div
                 style={{ display: "flex", alignItems: "center", gap: "12px" }}
               >
-                <span style={{ color: "white", fontSize: "0.9rem" }}>
+                <span
+                  style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem" }}
+                >
                   {user.name}
                 </span>
                 <button
@@ -186,13 +200,13 @@ const App = () => {
                     localStorage.removeItem("watchlist");
                   }}
                   style={{
-                    background: "transparent",
-                    color: "#9ca4ab",
-                    padding: "6px 12px",
-                    borderRadius: "8px",
+                    background: "rgba(255,255,255,0.1)",
+                    color: "white",
+                    border: "none",
+                    padding: "6px 14px",
+                    borderRadius: "20px",
+                    fontSize: "13px",
                     cursor: "pointer",
-                    border: "1px solid #9ca4ab",
-                    fontSize: "0.85rem",
                   }}
                 >
                   Log out
@@ -204,88 +218,118 @@ const App = () => {
                 style={{
                   background: "white",
                   color: "black",
-                  padding: "8px 16px",
-                  borderRadius: "8px",
+                  border: "none",
+                  padding: "6px 14px",
+                  borderRadius: "20px",
+                  fontSize: "13px",
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
-                  gap: "8px",
-                  fontSize: "0.9rem",
+                  gap: "6px",
                 }}
               >
                 <img
                   src="https://www.google.com/favicon.ico"
                   alt="Google"
-                  style={{ width: "16px", height: "16px" }}
+                  style={{ width: "14px", height: "14px" }}
                 />
                 Sign in with Google
               </button>
             )}
           </nav>
-
-          <img src="./hero.png" alt="Hero Banner" />
-          <h1>
-            Your Companion for the{" "}
-            <span className="text-gradient">2026 Oscars</span>
-          </h1>
-        </header>
+        </div>
 
         <div
           style={{
-            gridTemplateColumns: "260px 1fr",
-            gap: "24px",
-            marginTop: "2rem",
+            padding: "48px 20px",
+            textAlign: "center",
+            position: "relative",
+            background:
+              "radial-gradient(ellipse at 50% 0%, rgba(171,139,255,0.15) 0%, transparent 70%)",
           }}
         >
-          <div className="layout-grid">
-            <button
-              className="sidebar-toggle"
-              onClick={() => setSidebarOpen(!sidebarOpen)}
+          <p
+            style={{
+              fontSize: "12px",
+              letterSpacing: "0.15em",
+              color: "#AB8BFF",
+              margin: "0 0 12px",
+              textTransform: "uppercase",
+            }}
+          >
+            98th Academy Awards
+          </p>
+          <h4
+            style={{
+              fontSize: "clamp(28px, 5vw, 52px)",
+              fontWeight: "700",
+              color: "white",
+              margin: "0 0 8px",
+              lineHeight: "1.2",
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
+            Your companion for
+            <br />
+            the 2026 Oscars
+          </h4>
+          <p
+            style={{
+              fontSize: "14px",
+              color: "rgba(255,255,255,0.4)",
+              margin: "0",
+            }}
+          >
+            Track every nomination. Never miss a winner.
+          </p>
+        </div>
+      </header>
+
+      <div className="wrapper">
+        <div className="layout-grid">
+          <button
+            className="sidebar-toggle"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+          >
+            {sidebarOpen ? "✕ Hide Progress" : "📊 Show Progress"}
+          </button>
+          <div className={`sidebar-wrapper ${sidebarOpen ? "open" : ""}`}>
+            <Sidebar seen={seen} />
+          </div>
+          <div>
+            <div
+              style={{ display: "flex", gap: "8px", marginBottom: "1.5rem" }}
             >
-              {sidebarOpen ? "✕ Hide Progress" : "📊 Show Progress"}
-            </button>
-
-            <div className={`sidebar-wrapper ${sidebarOpen ? "open" : ""}`}>
-              <Sidebar seen={seen} />
+              {["All", "Seen", "Watchlist"].map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setFilter(f.toLowerCase())}
+                  style={{
+                    padding: "6px 16px",
+                    borderRadius: "8px",
+                    cursor: "pointer",
+                    fontSize: "0.9rem",
+                    fontWeight: filter === f.toLowerCase() ? "600" : "400",
+                    background:
+                      filter === f.toLowerCase() ? "white" : "transparent",
+                    color: filter === f.toLowerCase() ? "black" : "#9ca4ab",
+                    border: "1px solid",
+                    borderColor:
+                      filter === f.toLowerCase() ? "white" : "#9ca4ab",
+                  }}
+                >
+                  {f}
+                </button>
+              ))}
             </div>
-
-            <div>
-              <div
-                style={{ display: "flex", gap: "8px", marginBottom: "1.5rem" }}
-              >
-                {["All", "Seen", "Watchlist"].map((f) => (
-                  <button
-                    key={f}
-                    onClick={() => setFilter(f.toLowerCase())}
-                    style={{
-                      padding: "6px 16px",
-                      borderRadius: "8px",
-                      cursor: "pointer",
-                      fontSize: "0.9rem",
-                      fontWeight: filter === f.toLowerCase() ? "600" : "400",
-                      background:
-                        filter === f.toLowerCase() ? "white" : "transparent",
-                      color: filter === f.toLowerCase() ? "black" : "#9ca4ab",
-                      border: "1px solid",
-                      borderColor:
-                        filter === f.toLowerCase() ? "white" : "#9ca4ab",
-                    }}
-                  >
-                    {f}
-                  </button>
-                ))}
-              </div>
-
-              <div>
-                <Nominations
-                  seen={seen}
-                  toggleSeen={toggleSeen}
-                  watchlist={watchlist}
-                  toggleWatchlist={toggleWatchlist}
-                  filter={filter}
-                />
-              </div>
-            </div>
+            <Nominations
+              seen={seen}
+              toggleSeen={toggleSeen}
+              watchlist={watchlist}
+              toggleWatchlist={toggleWatchlist}
+              filter={filter}
+            />
           </div>
         </div>
       </div>
