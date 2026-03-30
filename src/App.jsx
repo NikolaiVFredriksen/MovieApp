@@ -6,6 +6,8 @@ import { updateSearchCount } from "./appwrite";
 import { getTrendingMovies } from "./appwrite";
 import { loginWithGoogle, logout, getCurrentUser } from "./appwrite";
 import Nominations from "./components/Nominations";
+import nominations from "./data/nominations.json";
+
 import Sidebar from "./components/Sidebar";
 import {
   getSeen,
@@ -283,6 +285,84 @@ const App = () => {
           >
             Track every nomination. Never miss a winner.
           </p>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "12px",
+            marginTop: "24px",
+          }}
+        >
+          <div
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              borderRadius: "12px",
+              padding: "16px 24px",
+              textAlign: "center",
+              border: "0.5px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "white",
+                margin: "0",
+                lineHeight: "1",
+              }}
+            >
+              {
+                [...new Set(seen.map((k) => k.split("-")[0]))].filter(Boolean)
+                  .length
+              }
+            </p>
+            <p
+              style={{
+                fontSize: "11px",
+                color: "rgba(255,255,255,0.4)",
+                margin: "4px 0 0",
+              }}
+            >
+              films seen
+            </p>
+          </div>
+
+          <div
+            style={{
+              background: "rgba(171,139,255,0.1)",
+              borderRadius: "12px",
+              padding: "16px 24px",
+              textAlign: "center",
+              border: "0.5px solid rgba(171,139,255,0.2)",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#AB8BFF",
+                margin: "0",
+                lineHeight: "1",
+              }}
+            >
+              {
+                [...new Set(watchlist.map((k) => k.split("-")[0]))].filter(
+                  Boolean,
+                ).length
+              }
+            </p>
+            <p
+              style={{
+                fontSize: "11px",
+                color: "rgba(171,139,255,0.6)",
+                margin: "4px 0 0",
+              }}
+            >
+              in watchlist
+            </p>
+          </div>
         </div>
       </header>
 
