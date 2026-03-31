@@ -170,11 +170,11 @@ const App = () => {
               <div
                 style={{ display: "flex", alignItems: "center", gap: "12px" }}
               >
-                <span
+                {/* <span
                   style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem" }}
                 >
-                  {user.name}
-                </span>
+                  {user.name?.split(" ")[0]}
+                </span> */}
                 <button
                   onClick={async () => {
                     await logout();
