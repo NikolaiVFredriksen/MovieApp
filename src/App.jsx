@@ -7,6 +7,8 @@ import { getTrendingMovies } from "./appwrite";
 import { loginWithGoogle, logout, getCurrentUser } from "./appwrite";
 import Nominations from "./components/Nominations";
 import nominations from "./data/nominations.json";
+import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
 
 import Sidebar from "./components/Sidebar";
 import {
@@ -168,11 +170,11 @@ const App = () => {
               <div
                 style={{ display: "flex", alignItems: "center", gap: "12px" }}
               >
-                <span
+                {/* <span
                   style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem" }}
                 >
-                  {user.name}
-                </span>
+                  {user.name?.split(" ")[0]}
+                </span> */}
                 <button
                   onClick={async () => {
                     await logout();
@@ -345,6 +347,20 @@ const App = () => {
             </p>
           </div>
         </div>
+
+        {/* {!user && (
+          <div style={{ marginTop: "20px", textAlign: "center" }}>
+            <p
+              style={{
+                fontSize: "13px",
+                color: "rgba(255,255,255,0.4)",
+                margin: "0 0 10px",
+              }}
+            >
+              Sign in to save your progress across devices
+            </p>
+          </div>
+        )} */}
       </header>
 
       <div className="wrapper">
@@ -394,6 +410,8 @@ const App = () => {
           </div>
         </div>
       </div>
+      <Footer />
+      <BackToTop />
     </main>
   );
 };
