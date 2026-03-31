@@ -8,6 +8,7 @@ import { loginWithGoogle, logout, getCurrentUser } from "./appwrite";
 import Nominations from "./components/Nominations";
 import nominations from "./data/nominations.json";
 import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
 
 import Sidebar from "./components/Sidebar";
 import {
@@ -410,6 +411,7 @@ const App = () => {
         </div>
       </div>
       <Footer />
+      <BackToTop />
     </main>
   );
 };
