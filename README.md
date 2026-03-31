@@ -8,7 +8,7 @@ A companion app for tracking the 2026 Oscar nominations. Browse all nominated fi
 
 ## Features
 
-- **All 15 categories** — Browse every 2026 Oscar nomination with poster, rating, and year
+- **All 15 categories** — Browse every 2026 Oscar nomination with poster, rating, and nominee
 - **Mark as seen** — Track which films you've watched, synced across categories
 - **Watchlist** — Save films you want to see
 - **Progress tracking** — Sidebar with per-category progress bars

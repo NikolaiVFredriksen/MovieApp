@@ -113,24 +113,24 @@ const Nominations = ({
                       <div className="mt-4">
                         <h3>{nominee.title}</h3>
                         <div className="content">
-                          <div className="rating">
-                            <img src="/star.svg" alt="rating" />
-                            <p>{rating}</p>
-                          </div>
-                          <span>•</span>
                           {nominee.person ? (
-                            <span className="lang">{nominee.person}</span>
+                            <span
+                              className="lang"
+                              style={{
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                whiteSpace: "nowrap",
+                                maxWidth: "100%",
+                              }}
+                            >
+                              {nominee.person}
+                            </span>
                           ) : (
                             <span className="lang">
-                              {movie?.original_language?.toUpperCase() || "N/A"}
+                              {movie?.genres?.[0]?.name || "N/A"}
                             </span>
                           )}
-                          <span>•</span>
-                          <span className="year">
-                            {movie?.release_date
-                              ? movie.release_date.split("-")[0]
-                              : "N/A"}
-                          </span>
+
                           {nominee.won === true && (
                             <span className="winner-badge"> • &nbsp;🏆</span>
                           )}
