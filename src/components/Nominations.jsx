@@ -69,7 +69,7 @@ const Nominations = ({
 
   return (
     <section className="nominations">
-      {nominations.map((cat) => {
+      {nominations.map((cat, index) => {
         const filteredNominees = cat.nominees.filter((n) => {
           if (filter === "seen")
             return seen.some((k) => k.startsWith(`${n.tmdb_id}-`));
@@ -85,7 +85,9 @@ const Nominations = ({
             key={cat.category}
             id={cat.category.replace(/\s+/g, "-").toLowerCase()}
           >
-            <h2 className="mt-20 mb-2">{cat.category}</h2>
+            <h2 className={`${index === 0 ? "mt-15" : "mt-20"} mb-2`}>
+              {cat.category}
+            </h2>
             <ul>
               {filteredNominees.map((nominee, index) => {
                 const movie = movieData[nominee.tmdb_id];
@@ -131,9 +133,9 @@ const Nominations = ({
                             </span>
                           )}
 
-                          {nominee.won === true && (
+                          {/* {nominee.won === true && (
                             <span className="winner-badge"> • &nbsp;🏆</span>
-                          )}
+                          )} */}
                         </div>
                         <div className="card-actions mb-5">
                           <button

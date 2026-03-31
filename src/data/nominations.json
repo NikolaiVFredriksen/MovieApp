@@ -2,16 +2,16 @@
   {
     "category": "Best Picture",
     "nominees": [
-      { "title": "Sinners", "tmdb_id": 1233413, "won": null },
-      { "title": "One Battle After Another", "tmdb_id": 1054867, "won": null },
-      { "title": "Frankenstein", "tmdb_id": 1062722, "won": null },
-      { "title": "Hamnet", "tmdb_id": 858024, "won": null },
-      { "title": "Marty Supreme", "tmdb_id": 1317288, "won": null },
-      { "title": "Sentimental Value", "tmdb_id": 1124566, "won": null },
-      { "title": "The Secret Agent", "tmdb_id": 1220564, "won": null },
-      { "title": "Train Dreams", "tmdb_id": 1241983, "won": null },
-      { "title": "Bugonia", "tmdb_id": 701387, "won": null },
-      { "title": "F1", "tmdb_id": 911430, "won": null }
+      { "title": "Sinners", "tmdb_id": 1233413, "won": false },
+      { "title": "One Battle After Another", "tmdb_id": 1054867, "won": true },
+      { "title": "Frankenstein", "tmdb_id": 1062722, "won": false },
+      { "title": "Hamnet", "tmdb_id": 858024, "won": false },
+      { "title": "Marty Supreme", "tmdb_id": 1317288, "won": false },
+      { "title": "Sentimental Value", "tmdb_id": 1124566, "won": false },
+      { "title": "The Secret Agent", "tmdb_id": 1220564, "won": false },
+      { "title": "Train Dreams", "tmdb_id": 1241983, "won": false },
+      { "title": "Bugonia", "tmdb_id": 701387, "won": false },
+      { "title": "F1", "tmdb_id": 911430, "won": false }
     ]
   },
   {
@@ -21,31 +21,31 @@
         "title": "Marty Supreme",
         "tmdb_id": 1317288,
         "person": "Timothée Chalamet",
-        "won": null
+        "won": false
       },
       {
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Leonardo DiCaprio",
-        "won": null
+        "won": false
       },
       {
         "title": "Blue Moon",
         "tmdb_id": 1299655,
         "person": "Ethan Hawke",
-        "won": null
+        "won": false
       },
       {
         "title": "Sinners",
         "tmdb_id": 1233413,
         "person": "Michael B. Jordan",
-        "won": null
+        "won": true
       },
       {
         "title": "The Secret Agent",
         "tmdb_id": 1220564,
         "person": "Wagner Moura",
-        "won": null
+        "won": false
       }
     ]
   },
@@ -56,31 +56,31 @@
         "title": "Hamnet",
         "tmdb_id": 858024,
         "person": "Jessie Buckley",
-        "won": null
+        "won": true
       },
       {
         "title": "If I Had Legs I'd Kick You",
         "tmdb_id": 1160360,
         "person": "Rose Byrne",
-        "won": null
+        "won": false
       },
       {
         "title": "Song Sung Blue",
         "tmdb_id": 1371185,
         "person": "Kate Hudson",
-        "won": null
+        "won": false
       },
       {
         "title": "Sentimental Value",
         "tmdb_id": 1124566,
         "person": "Renate Reinsve",
-        "won": null
+        "won": false
       },
       {
         "title": "Bugonia",
         "tmdb_id": 701387,
         "person": "Emma Stone",
-        "won": null
+        "won": false
       }
     ]
   },
@@ -91,31 +91,31 @@
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Benicio del Toro",
-        "won": null
+        "won": false
       },
       {
         "title": "Frankenstein",
         "tmdb_id": 1062722,
         "person": "Jacob Elordi",
-        "won": null
+        "won": false
       },
       {
         "title": "Sinners",
         "tmdb_id": 1233413,
         "person": "Delroy Lindo",
-        "won": null
+        "won": false
       },
       {
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Sean Penn",
-        "won": null
+        "won": true
       },
       {
         "title": "Sentimental Value",
         "tmdb_id": 1124566,
         "person": "Stellan Skarsgård",
-        "won": null
+        "won": false
       }
     ]
   },
@@ -126,13 +126,13 @@
         "title": "Sentimental Value",
         "tmdb_id": 1124566,
         "person": "Elle Fanning",
-        "won": null
+        "won": false
       },
       {
         "title": "Sentimental Value",
         "tmdb_id": 1124566,
         "person": "Inga Ibsdotter Lilleaas",
-        "won": null
+        "won": false
       },
       {
         "title": "Weapons",
@@ -144,13 +144,13 @@
         "title": "Sinners",
         "tmdb_id": 1233413,
         "person": "Wunmi Mosaku",
-        "won": null
+        "won": false
       },
       {
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Teyana Taylor",
-        "won": null
+        "won": false
       }
     ]
   },
@@ -161,46 +161,46 @@
         "title": "Hamnet",
         "tmdb_id": 858024,
         "person": "Chloé Zhao",
-        "won": null
+        "won": false
       },
       {
         "title": "Marty Supreme",
         "tmdb_id": 1317288,
         "person": "Josh Safdie",
-        "won": null
+        "won": false
       },
       {
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Paul Thomas Anderson",
-        "won": null
+        "won": true
       },
       {
         "title": "Sentimental Value",
         "tmdb_id": 1124566,
         "person": "Joachim Trier",
-        "won": null
+        "won": false
       },
       {
         "title": "Sinners",
         "tmdb_id": 1233413,
         "person": "Ryan Coogler",
-        "won": null
+        "won": false
       }
     ]
   },
   {
     "category": "Animated Feature",
     "nominees": [
-      { "title": "Arco", "tmdb_id": 804370, "won": null },
-      { "title": "Elio", "tmdb_id": 1022787, "won": null },
-      { "title": "KPop Demon Hunters", "tmdb_id": 803796, "won": null },
+      { "title": "Arco", "tmdb_id": 804370, "won": false },
+      { "title": "Elio", "tmdb_id": 1022787, "won": false },
+      { "title": "KPop Demon Hunters", "tmdb_id": 803796, "won": true },
       {
         "title": "Little Amélie or the Character of Rain",
         "tmdb_id": 682012,
-        "won": null
+        "won": false
       },
-      { "title": "Zootopia 2", "tmdb_id": 1084242, "won": null }
+      { "title": "Zootopia 2", "tmdb_id": 1084242, "won": false }
     ]
   },
   {
@@ -210,26 +210,31 @@
         "title": "The Secret Agent",
         "tmdb_id": 1220564,
         "country": "Brazil",
-        "won": null
+        "won": false
       },
       {
         "title": "It Was Just an Accident",
         "tmdb_id": 1456349,
         "country": "France",
-        "won": null
+        "won": false
       },
       {
         "title": "Sentimental Value",
         "tmdb_id": 1124566,
         "country": "Norway",
-        "won": null
+        "won": true
       },
-      { "title": "Sirāt", "tmdb_id": 1151272, "country": "Spain", "won": null },
+      {
+        "title": "Sirāt",
+        "tmdb_id": 1151272,
+        "country": "Spain",
+        "won": false
+      },
       {
         "title": "The Voice of Hind Rajab",
         "tmdb_id": 1480382,
         "country": "Tunisia",
-        "won": null
+        "won": false
       }
     ]
   },
@@ -240,31 +245,31 @@
         "title": "Frankenstein",
         "tmdb_id": 1062722,
         "person": "Dan Laustsen",
-        "won": null
+        "won": false
       },
       {
         "title": "Marty Supreme",
         "tmdb_id": 1317288,
         "person": "Darius Khondji",
-        "won": null
+        "won": false
       },
       {
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Michael Bauman",
-        "won": null
+        "won": false
       },
       {
         "title": "Sinners",
         "tmdb_id": 1233413,
         "person": "Autumn Durald Arkapaw",
-        "won": null
+        "won": true
       },
       {
         "title": "Train Dreams",
         "tmdb_id": 1241983,
         "person": "Adolpho Veloso",
-        "won": null
+        "won": false
       }
     ]
   },
@@ -275,31 +280,31 @@
         "title": "F1",
         "tmdb_id": 911430,
         "person": "Stephen Mirrione",
-        "won": null
+        "won": false
       },
       {
         "title": "Marty Supreme",
         "tmdb_id": 1317288,
         "person": "Josh Safdie & Ronald Bronstein",
-        "won": null
+        "won": false
       },
       {
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Andy Jurgensen",
-        "won": null
+        "won": true
       },
       {
         "title": "Sentimental Value",
         "tmdb_id": 1124566,
         "person": "Olivier Bugge Coutté",
-        "won": null
+        "won": false
       },
       {
         "title": "Sinners",
         "tmdb_id": 1233413,
         "person": "Michael P. Shawver",
-        "won": null
+        "won": false
       }
     ]
   },
@@ -310,31 +315,31 @@
         "title": "Bugonia",
         "tmdb_id": 701387,
         "person": "Jerskin Fendrix",
-        "won": null
+        "won": false
       },
       {
         "title": "Frankenstein",
         "tmdb_id": 1062722,
         "person": "Alexandre Desplat",
-        "won": null
+        "won": false
       },
       {
         "title": "Hamnet",
         "tmdb_id": 858024,
         "person": "Max Richter",
-        "won": null
+        "won": false
       },
       {
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Jonny Greenwood",
-        "won": null
+        "won": false
       },
       {
         "title": "Sinners",
         "tmdb_id": 1233413,
         "person": "Ludwig Göransson",
-        "won": null
+        "won": true
       }
     ]
   },
@@ -345,42 +350,42 @@
         "title": "Avatar: Fire and Ash",
         "tmdb_id": 83533,
         "person": "Deborah L. Scott",
-        "won": null
+        "won": false
       },
       {
         "title": "Frankenstein",
         "tmdb_id": 1062722,
         "person": "Kate Hawley",
-        "won": null
+        "won": true
       },
       {
         "title": "Hamnet",
         "tmdb_id": 858024,
         "person": "Malgosia Turzanska",
-        "won": null
+        "won": false
       },
       {
         "title": "Marty Supreme",
         "tmdb_id": 1317288,
         "person": "Miyako Bellizzi",
-        "won": null
+        "won": false
       },
       {
         "title": "Sinners",
         "tmdb_id": 1233413,
         "person": "Ruth E. Carter",
-        "won": null
+        "won": false
       }
     ]
   },
   {
     "category": "Visual Effects",
     "nominees": [
-      { "title": "Avatar: Fire and Ash", "tmdb_id": 83533, "won": null },
-      { "title": "F1", "tmdb_id": 911430, "won": null },
-      { "title": "Jurassic World Rebirth", "tmdb_id": 1234821, "won": null },
-      { "title": "The Lost Bus", "tmdb_id": 1236470, "won": null },
-      { "title": "Sinners", "tmdb_id": 1233413, "won": null }
+      { "title": "Avatar: Fire and Ash", "tmdb_id": 83533, "won": true },
+      { "title": "F1", "tmdb_id": 911430, "won": false },
+      { "title": "Jurassic World Rebirth", "tmdb_id": 1234821, "won": false },
+      { "title": "The Lost Bus", "tmdb_id": 1236470, "won": false },
+      { "title": "Sinners", "tmdb_id": 1233413, "won": false }
     ]
   },
   {
@@ -390,31 +395,31 @@
         "title": "Blue Moon",
         "tmdb_id": 1299655,
         "person": "Robert Kaplow",
-        "won": null
+        "won": false
       },
       {
         "title": "It Was Just an Accident",
         "tmdb_id": 1243685,
         "person": "Jafar Panahi",
-        "won": null
+        "won": false
       },
       {
         "title": "Marty Supreme",
         "tmdb_id": 1317288,
         "person": "Josh Safdie & Ronald Bronstein",
-        "won": null
+        "won": false
       },
       {
         "title": "Sentimental Value",
         "tmdb_id": 1124566,
         "person": "Joachim Trier & Eskil Vogt",
-        "won": null
+        "won": false
       },
       {
         "title": "Sinners",
         "tmdb_id": 1233413,
         "person": "Ryan Coogler",
-        "won": null
+        "won": true
       }
     ]
   },
@@ -425,31 +430,31 @@
         "title": "Bugonia",
         "tmdb_id": 701387,
         "person": "Will Tracy",
-        "won": null
+        "won": false
       },
       {
         "title": "Frankenstein",
         "tmdb_id": 1062722,
         "person": "Guillermo del Toro",
-        "won": null
+        "won": false
       },
       {
         "title": "Hamnet",
         "tmdb_id": 858024,
         "person": "Chloé Zhao & Maggie O'Farrell",
-        "won": null
+        "won": false
       },
       {
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Paul Thomas Anderson",
-        "won": null
+        "won": true
       },
       {
         "title": "Train Dreams",
         "tmdb_id": 1241983,
         "person": "Clint Bentley & Greg Kwedar",
-        "won": null
+        "won": false
       }
     ]
   }

@@ -345,6 +345,20 @@ const App = () => {
             </p>
           </div>
         </div>
+
+        {/* {!user && (
+          <div style={{ marginTop: "20px", textAlign: "center" }}>
+            <p
+              style={{
+                fontSize: "13px",
+                color: "rgba(255,255,255,0.4)",
+                margin: "0 0 10px",
+              }}
+            >
+              Sign in to save your progress across devices
+            </p>
+          </div>
+        )} */}
       </header>
 
       <div className="wrapper">
