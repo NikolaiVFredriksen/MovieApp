@@ -36,7 +36,6 @@ const App = () => {
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
-  const [trendingMovies, setTrendingMovies] = useState([]);
   const [user, setUser] = useState(null);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -134,24 +133,6 @@ const App = () => {
       setIsLoading(false);
     }
   };
-
-  const loadTrendingMovies = async () => {
-    try {
-      const movies = await getTrendingMovies();
-      setTrendingMovies(movies);
-    } catch (error) {
-      console.error("Error fetching trending movies:", error);
-    }
-  };
-
-  // useEffect to handle debounced search and initial load
-  useEffect(() => {
-    fetchMovies(debouncedSearchTerm);
-  }, [debouncedSearchTerm]);
-
-  useEffect(() => {
-    loadTrendingMovies();
-  }, []);
 
   return (
     <main>
