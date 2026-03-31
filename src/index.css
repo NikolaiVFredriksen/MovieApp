@@ -35,6 +35,10 @@
     @apply text-2xl font-bold text-white sm:text-3xl;
   }
 
+  h3 {
+    @apply text-lg font-bold text-white sm:text-lg;
+  }
+
   main {
     @apply min-h-screen relative bg-primary;
   }
@@ -54,10 +58,30 @@
   }
 
   .wrapper {
-    @apply px-5 py-12 xs:p-10 max-w-7xl mx-auto flex flex-col relative z-10;
+    @apply px-5 py-12 xs:p-10 max-w-[1400px] mx-auto flex flex-col relative z-10;
   }
 
   .trending {
+    @apply mt-20;
+
+    & ul {
+      @apply flex flex-row overflow-y-auto gap-5 -mt-10 w-full hide-scrollbar;
+    }
+
+    & ul li {
+      @apply min-w-[230px] flex flex-row items-center;
+    }
+
+    & ul li p {
+      @apply fancy-text mt-[22px] text-nowrap;
+    }
+
+    & ul li img {
+      @apply w-[127px] h-[163px] rounded-lg object-cover -ml-3.5;
+    }
+  }
+
+  .secondary-awards {
     @apply mt-20;
 
     & ul {
@@ -101,6 +125,10 @@
     }
   }
 
+  .sidebar {
+    @apply bg-dark-100 rounded-2xl p-5 shadow-inner shadow-light-100/10;
+  }
+
   .movie-card {
     @apply bg-dark-100 p-5 rounded-2xl shadow-inner shadow-light-100/10;
 
@@ -139,6 +167,58 @@
     & .content .year {
       @apply text-gray-100 font-medium text-base;
     }
+  }
+
+  .nominations {
+    & ul {
+      @apply grid grid-cols-2 gap-3 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5;
+    }
+  }
+
+  .card-actions {
+    @apply flex gap-2 mt-3;
+    & button {
+      @apply text-xs px-2 py-1 rounded-lg border border-gray-600 text-gray-300 cursor-pointer;
+    }
+    & button.active {
+      @apply border-purple-400 text-purple-400;
+    }
+  }
+}
+
+.layout-grid {
+  @apply grid gap-6 mt-8;
+  grid-template-columns: 260px 1fr;
+}
+
+.sidebar-toggle {
+  @apply hidden;
+}
+
+.sidebar-wrapper {
+  @apply block;
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+}
+
+@media (max-width: 768px) {
+  .layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-toggle {
+    @apply flex items-center gap-2 text-sm font-medium text-white px-4 py-2 rounded-lg border border-gray-600 cursor-pointer bg-transparent;
+    grid-column: 1;
+  }
+
+  .sidebar-wrapper {
+    @apply hidden;
+    grid-column: 1;
+  }
+
+  .sidebar-wrapper.open {
+    @apply block;
   }
 }
 

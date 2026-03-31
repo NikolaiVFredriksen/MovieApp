@@ -1,11 +1,22 @@
-import React from "react";
-import Search from "./components/Search";
 import { useState, useEffect } from "react";
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
 import { useDebounce } from "react-use";
 import { updateSearchCount } from "./appwrite";
 import { getTrendingMovies } from "./appwrite";
+import { loginWithGoogle, logout, getCurrentUser } from "./appwrite";
+import Nominations from "./components/Nominations";
+import nominations from "./data/nominations.json";
+
+import Sidebar from "./components/Sidebar";
+import {
+  getSeen,
+  addSeen,
+  removeSeen,
+  getWatchlist,
+  addWatchlist,
+  removeWatchlist,
+} from "./appwrite";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 
@@ -26,6 +37,61 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [user, setUser] = useState(null);
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [filter, setFilter] = useState("all");
+  const [seen, setSeen] = useState(() =>
+    JSON.parse(localStorage.getItem("seen") || "[]"),
+  );
+  const [watchlist, setWatchlist] = useState(() =>
+    JSON.parse(localStorage.getItem("watchlist") || "[]"),
+  );
+
+  const toggleWatchlist = async (tmdbId) => {
+    const hasAny = watchlist.some((k) => k.startsWith(`${tmdbId}-`));
+    if (hasAny) {
+      const updated = watchlist.filter((k) => !k.startsWith(`${tmdbId}-`));
+      setWatchlist(updated);
+      localStorage.setItem("watchlist", JSON.stringify(updated));
+      if (user) await removeWatchlist(user.$id, tmdbId);
+    } else {
+      const updated = [...watchlist, `${tmdbId}-`];
+      setWatchlist(updated);
+      localStorage.setItem("watchlist", JSON.stringify(updated));
+      if (user) await addWatchlist(user.$id, tmdbId);
+    }
+  };
+
+  const toggleSeen = async (tmdbId) => {
+    const hasAny = seen.some((k) => k.startsWith(`${tmdbId}-`));
+    if (hasAny) {
+      const updated = seen.filter((k) => !k.startsWith(`${tmdbId}-`));
+      setSeen(updated);
+      localStorage.setItem("seen", JSON.stringify(updated));
+      if (user) await removeSeen(user.$id, tmdbId);
+    } else {
+      const updated = [...seen, `${tmdbId}-`];
+      setSeen(updated);
+      localStorage.setItem("seen", JSON.stringify(updated));
+      if (user) await addSeen(user.$id, tmdbId);
+    }
+  };
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      const currentUser = await getCurrentUser();
+      setUser(currentUser);
+      if (currentUser) {
+        const seenData = await getSeen(currentUser.$id);
+        const watchlistData = await getWatchlist(currentUser.$id);
+        setSeen(seenData.map((id) => `${id}-`));
+        setWatchlist(watchlistData.map((id) => `${id}-`));
+      }
+    };
+    fetchUser();
+  }, []);
 
   useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
 
@@ -90,45 +156,262 @@ const App = () => {
   return (
     <main>
       <div className="pattern" />
+
+      <header
+        style={{
+          background: "#0a0618",
+          overflow: "hidden",
+          marginBottom: "2rem",
+          position: "relative",
+          zIndex: 10,
+        }}
+      >
+        <div
+          style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 40px" }}
+        >
+          <nav
+            style={{
+              padding: "12px 0",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              borderBottom: "0.5px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            <span
+              style={{ color: "white", fontWeight: "600", fontSize: "1.1rem" }}
+            >
+              OscarsCompanion
+            </span>
+            {user ? (
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "12px" }}
+              >
+                <span
+                  style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem" }}
+                >
+                  {user.name}
+                </span>
+                <button
+                  onClick={async () => {
+                    await logout();
+                    setUser(null);
+                    setSeen([]);
+                    setWatchlist([]);
+                    localStorage.removeItem("seen");
+                    localStorage.removeItem("watchlist");
+                  }}
+                  style={{
+                    background: "rgba(255,255,255,0.1)",
+                    color: "white",
+                    border: "none",
+                    padding: "6px 14px",
+                    borderRadius: "20px",
+                    fontSize: "13px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Log out
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={loginWithGoogle}
+                style={{
+                  background: "white",
+                  color: "black",
+                  border: "none",
+                  padding: "6px 14px",
+                  borderRadius: "20px",
+                  fontSize: "13px",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                }}
+              >
+                <img
+                  src="https://www.google.com/favicon.ico"
+                  alt="Google"
+                  style={{ width: "14px", height: "14px" }}
+                />
+                Sign in with Google
+              </button>
+            )}
+          </nav>
+        </div>
+
+        <div
+          style={{
+            padding: "48px 20px",
+            textAlign: "center",
+            position: "relative",
+            background:
+              "radial-gradient(ellipse at 50% 0%, rgba(171,139,255,0.15) 0%, transparent 70%)",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "12px",
+              letterSpacing: "0.15em",
+              color: "#AB8BFF",
+              margin: "0 0 12px",
+              textTransform: "uppercase",
+            }}
+          >
+            98th Academy Awards
+          </p>
+          <h4
+            style={{
+              fontSize: "clamp(28px, 5vw, 52px)",
+              fontWeight: "700",
+              color: "white",
+              margin: "0 0 8px",
+              lineHeight: "1.2",
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
+            Your companion for
+            <br />
+            the 2026 Oscars
+          </h4>
+          <p
+            style={{
+              fontSize: "14px",
+              color: "rgba(255,255,255,0.4)",
+              margin: "0",
+            }}
+          >
+            Track every nomination. Never miss a winner.
+          </p>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "12px",
+            marginTop: "24px",
+          }}
+        >
+          <div
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              borderRadius: "12px",
+              padding: "16px 24px",
+              textAlign: "center",
+              border: "0.5px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "white",
+                margin: "0",
+                lineHeight: "1",
+              }}
+            >
+              {
+                [...new Set(seen.map((k) => k.split("-")[0]))].filter(Boolean)
+                  .length
+              }
+            </p>
+            <p
+              style={{
+                fontSize: "11px",
+                color: "rgba(255,255,255,0.4)",
+                margin: "4px 0 0",
+              }}
+            >
+              films seen
+            </p>
+          </div>
+
+          <div
+            style={{
+              background: "rgba(171,139,255,0.1)",
+              borderRadius: "12px",
+              padding: "16px 24px",
+              textAlign: "center",
+              border: "0.5px solid rgba(171,139,255,0.2)",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#AB8BFF",
+                margin: "0",
+                lineHeight: "1",
+              }}
+            >
+              {
+                [...new Set(watchlist.map((k) => k.split("-")[0]))].filter(
+                  Boolean,
+                ).length
+              }
+            </p>
+            <p
+              style={{
+                fontSize: "11px",
+                color: "rgba(171,139,255,0.6)",
+                margin: "4px 0 0",
+              }}
+            >
+              in watchlist
+            </p>
+          </div>
+        </div>
+      </header>
+
       <div className="wrapper">
-        <header>
-          <img src="./hero.png" alt="Hero Banner" />
-          <h1>
-            Find <span className="text-gradient">Movies</span> You'll Enjoy
-            Without the Hassle
-          </h1>
-          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        </header>
-
-        {trendingMovies.length > 0 && (
-          <section className="trending">
-            <h2>Trending Movies</h2>
-            <ul>
-              {trendingMovies.map((movie, index) => (
-                <li key={movie.$id}>
-                  <p>{index + 1}</p>
-                  <img src={movie.poster_url} alt={movie.title} />
-                </li>
+        <div className="layout-grid">
+          <button
+            className="sidebar-toggle"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+          >
+            {sidebarOpen ? "✕ Hide Progress" : "📊 Show Progress"}
+          </button>
+          <div className={`sidebar-wrapper ${sidebarOpen ? "open" : ""}`}>
+            <Sidebar seen={seen} />
+          </div>
+          <div>
+            <div
+              style={{ display: "flex", gap: "8px", marginBottom: "1.5rem" }}
+            >
+              {["All", "Seen", "Watchlist"].map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setFilter(f.toLowerCase())}
+                  style={{
+                    padding: "6px 16px",
+                    borderRadius: "8px",
+                    cursor: "pointer",
+                    fontSize: "0.9rem",
+                    fontWeight: filter === f.toLowerCase() ? "600" : "400",
+                    background:
+                      filter === f.toLowerCase() ? "white" : "transparent",
+                    color: filter === f.toLowerCase() ? "black" : "#9ca4ab",
+                    border: "1px solid",
+                    borderColor:
+                      filter === f.toLowerCase() ? "white" : "#9ca4ab",
+                  }}
+                >
+                  {f}
+                </button>
               ))}
-            </ul>
-          </section>
-        )}
-
-        <section className="all-movies">
-          <h2>All Movies</h2>
-
-          {isLoading ? (
-            <Spinner />
-          ) : errorMessage ? (
-            <p className="text-red-500">{errorMessage}</p>
-          ) : (
-            <ul>
-              {movieList.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
-              ))}
-            </ul>
-          )}
-        </section>
+            </div>
+            <Nominations
+              seen={seen}
+              toggleSeen={toggleSeen}
+              watchlist={watchlist}
+              toggleWatchlist={toggleWatchlist}
+              filter={filter}
+            />
+          </div>
+        </div>
       </div>
     </main>
   );
