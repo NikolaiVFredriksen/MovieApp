@@ -19,6 +19,7 @@ const Nominations = ({
   toggleWatchlist,
 }) => {
   const [movieData, setMovieData] = useState({});
+  const [personData, setPersonData] = useState({});
 
   useEffect(() => {
     const fetchMovieData = async () => {
@@ -40,6 +41,29 @@ const Nominations = ({
         }),
       );
       setMovieData(results);
+      const personIds = [
+        ...new Set(
+          nominations.flatMap((cat) =>
+            cat.nominees.filter((n) => n.person_id).map((n) => n.person_id),
+          ),
+        ),
+      ];
+      const personResults = {};
+      await Promise.all(
+        personIds.map(async (id) => {
+          try {
+            const res = await fetch(
+              `${API_BASE_URL}/person/${id}`,
+              API_OPTIONS,
+            );
+            const data = await res.json();
+            personResults[id] = data;
+          } catch (e) {
+            console.error(`Failed to fetch person ${id}`, e);
+          }
+        }),
+      );
+      setPersonData(personResults);
     };
     fetchMovieData();
   }, []);
@@ -106,11 +130,14 @@ const Nominations = ({
                     <div className="movie-card">
                       <img
                         src={
-                          movie?.poster_path
-                            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                            : `/no-movie.png`
+                          nominee.person_id &&
+                          personData[nominee.person_id]?.profile_path
+                            ? `https://image.tmdb.org/t/p/w500/${personData[nominee.person_id].profile_path}`
+                            : movie?.poster_path
+                              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                              : `/no-movie.png`
                         }
-                        alt={nominee.title}
+                        alt={nominee.person || nominee.title}
                       />
                       <div className="mt-4">
                         <h3>{nominee.title}</h3>

@@ -1,8 +1,12 @@
 # OscarsCompanion 🎬
 
+![OscarsCompanion Header](screenshots/header.png)
+
 A companion app for tracking the 2026 Oscar nominations. Browse all nominated films, mark what you've seen, build a watchlist, and track your progress across every category.
 
 **[Live Demo](https://movie-app-git-oscars-companion-zillacoops-projects.vercel.app/)**
+
+![OscarsCompanion App](screenshots/app.png)
 
 ---
 
@@ -40,8 +44,8 @@ A companion app for tracking the 2026 Oscar nominations. Browse all nominated fi
 ### Installation
 
 ```bash
-git clone https://github.com/NikolaiVFredriksen/MovieApp
-cd MovieApp
+git clone https://github.com/NikolaiVFredriksen/OscarsCompanion
+cd OscarsCompanion
 npm install
 ```
 
@@ -78,6 +82,8 @@ src/
 │   ├── Sidebar.jsx       # Progress bars and category anchors
 │   ├── MovieCard.jsx     # Reusable movie card component
 │   └── Search.jsx        # Search input
+│   └── Footer.jsx        # Footer component
+│   └── BackToTop.jsx     # Back to top button
 ├── data/
 │   └── nominations.json  # 2026 Oscar nominations with TMDB IDs
 ├── appwrite.js           # Appwrite client and database functions
@@ -86,13 +92,7 @@ src/
 
 ---
 
-## Screenshots
-
-> Coming soon
-
----
-
 ## Author
 
-Nikolai Villanueva Fredriksen  
+Nikolai Villanueva Fredriksen
 [GitHub](https://github.com/NikolaiVFredriksen)
