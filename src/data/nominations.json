@@ -21,30 +21,35 @@
         "title": "Marty Supreme",
         "tmdb_id": 1317288,
         "person": "Timothée Chalamet",
+        "person_id": 1190668,
         "won": false
       },
       {
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Leonardo DiCaprio",
+        "person_id": 6193,
         "won": false
       },
       {
         "title": "Blue Moon",
         "tmdb_id": 1299655,
         "person": "Ethan Hawke",
+        "person_id": 569,
         "won": false
       },
       {
         "title": "Sinners",
         "tmdb_id": 1233413,
         "person": "Michael B. Jordan",
+        "person_id": 135651,
         "won": true
       },
       {
         "title": "The Secret Agent",
         "tmdb_id": 1220564,
         "person": "Wagner Moura",
+        "person_id": 52583,
         "won": false
       }
     ]
@@ -56,30 +61,35 @@
         "title": "Hamnet",
         "tmdb_id": 858024,
         "person": "Jessie Buckley",
+        "person_id": 1498158,
         "won": true
       },
       {
         "title": "If I Had Legs I'd Kick You",
         "tmdb_id": 1160360,
         "person": "Rose Byrne",
+        "person_id": 9827,
         "won": false
       },
       {
         "title": "Song Sung Blue",
         "tmdb_id": 1371185,
         "person": "Kate Hudson",
+        "person_id": 11661,
         "won": false
       },
       {
         "title": "Sentimental Value",
         "tmdb_id": 1124566,
         "person": "Renate Reinsve",
+        "person_id": 1576786,
         "won": false
       },
       {
         "title": "Bugonia",
         "tmdb_id": 701387,
         "person": "Emma Stone",
+        "person_id": 54693,
         "won": false
       }
     ]
@@ -91,30 +101,35 @@
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Benicio del Toro",
+        "person_id": 1121,
         "won": false
       },
       {
         "title": "Frankenstein",
         "tmdb_id": 1062722,
         "person": "Jacob Elordi",
+        "person_id": 2034418,
         "won": false
       },
       {
         "title": "Sinners",
         "tmdb_id": 1233413,
         "person": "Delroy Lindo",
+        "person_id": 18792,
         "won": false
       },
       {
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Sean Penn",
+        "person_id": 2228,
         "won": true
       },
       {
         "title": "Sentimental Value",
         "tmdb_id": 1124566,
         "person": "Stellan Skarsgård",
+        "person_id": 1640,
         "won": false
       }
     ]
@@ -126,30 +141,35 @@
         "title": "Sentimental Value",
         "tmdb_id": 1124566,
         "person": "Elle Fanning",
+        "person_id": 18050,
         "won": false
       },
       {
         "title": "Sentimental Value",
         "tmdb_id": 1124566,
         "person": "Inga Ibsdotter Lilleaas",
+        "person_id": 1421850,
         "won": false
       },
       {
         "title": "Weapons",
         "tmdb_id": 1078605,
         "person": "Amy Madigan",
+        "person_id": 23882,
         "won": true
       },
       {
         "title": "Sinners",
         "tmdb_id": 1233413,
         "person": "Wunmi Mosaku",
+        "person_id": 134774,
         "won": false
       },
       {
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Teyana Taylor",
+        "person_id": 964679,
         "won": false
       }
     ]
@@ -161,30 +181,35 @@
         "title": "Hamnet",
         "tmdb_id": 858024,
         "person": "Chloé Zhao",
+        "person_id": 1395183,
         "won": false
       },
       {
         "title": "Marty Supreme",
         "tmdb_id": 1317288,
         "person": "Josh Safdie",
+        "person_id": 129561,
         "won": false
       },
       {
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Paul Thomas Anderson",
+        "person_id": 4762,
         "won": true
       },
       {
         "title": "Sentimental Value",
         "tmdb_id": 1124566,
         "person": "Joachim Trier",
+        "person_id": 71609,
         "won": false
       },
       {
         "title": "Sinners",
         "tmdb_id": 1233413,
         "person": "Ryan Coogler",
+        "person_id": 1056121,
         "won": false
       }
     ]
@@ -448,7 +473,7 @@
         "title": "One Battle After Another",
         "tmdb_id": 1054867,
         "person": "Paul Thomas Anderson",
-        "won": true
+        "won": false
       },
       {
         "title": "Train Dreams",

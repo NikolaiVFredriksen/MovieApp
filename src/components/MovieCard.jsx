@@ -10,11 +10,13 @@ const MovieCard = ({
     <div className="movie-card">
       <img
         src={
-          poster_path
-            ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-            : `/no-movie.png`
+          nominee.person_id && personData[nominee.person_id]?.profile_path
+            ? `https://image.tmdb.org/t/p/w500/${personData[nominee.person_id].profile_path}`
+            : movie?.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+              : `/no-movie.png`
         }
-        alt={title || "Movie poster"}
+        alt={nominee.person || nominee.title}
       />
 
       <div className="mt-4">
