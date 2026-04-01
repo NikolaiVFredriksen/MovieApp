@@ -161,11 +161,29 @@ const App = () => {
               borderBottom: "0.5px solid rgba(255,255,255,0.08)",
             }}
           >
-            <span
-              style={{ color: "white", fontWeight: "600", fontSize: "1.1rem" }}
-            >
-              OscarsCompanion
-            </span>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <img
+                src="/movie.svg"
+                alt="OscarsCompanion logo"
+                style={{
+                  width: "24px",
+                  height: "24px",
+                  marginBottom: "7px",
+                  marginLeft: "2px",
+                  marginRight: "1px",
+                }}
+              />
+
+              <span
+                style={{
+                  color: "white",
+                  fontWeight: "600",
+                  fontSize: "1.1rem",
+                }}
+              >
+                OscarsCompanion
+              </span>
+            </div>
             {user ? (
               <div
                 style={{ display: "flex", alignItems: "center", gap: "12px" }}
