@@ -13,7 +13,8 @@ export const account = new Account(client);
 
 // Google login
 export const loginWithGoogle = () => {
-  const redirectUrl = import.meta.env.VITE_REDIRECT_URL || "localhost:5173";
+  const redirectUrl = import.meta.env
+    .VITE_REDIRECT_URL; /* || "localhost:5173"; */
   account.createOAuth2Session("google", redirectUrl, redirectUrl, []);
 };
 
