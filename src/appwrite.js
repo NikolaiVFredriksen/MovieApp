@@ -14,9 +14,8 @@ export const account = new Account(client);
 // Google login
 export const loginWithGoogle = () => {
   const redirectUrl =
-    import.meta.env.VITE_REDIRECT_URL ||
-    "https://movie-app-git-oscars-companion-zillacoops-projects.vercel.app/";
-  console.log("redirectUrl:", redirectUrl);
+    import.meta.env.VITE_REDIRECT_URL || "http://localhost:5173";
+  console.log("REDIRECT URL:", redirectUrl);
   account.createOAuth2Session("google", redirectUrl, redirectUrl, []);
 };
 
