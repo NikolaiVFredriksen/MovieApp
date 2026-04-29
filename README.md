@@ -4,7 +4,7 @@
 
 A companion app for tracking the 2026 Oscar nominations. Browse all nominated films, mark what you've seen, build a watchlist, and track your progress across every category.
 
-**[Live Demo](https://movie-app-git-oscars-companion-zillacoops-projects.vercel.app/)**
+**[Live Demo](https://movie-app-git-main-zillacoops-projects.vercel.app)**
 
 ![OscarsCompanion App](screenshots/app.png)
 
